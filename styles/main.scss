@@ -1,0 +1,214 @@
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+li {
+  list-style-type: none;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Import Fonts
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;900&family=Fraunces:wght@400;700;900&display=swap");
+
+// Variables
+:root {
+  // Colours
+  --clr-cyan: 179, 81%, 29%;
+  --clr-grey-blue: 215, 19%, 25%;
+  --clr-orange: 25, 94%, 86%;
+  --clr-cream: 43, 78%, 98%;
+  --clr-grey: 215, 5%, 54%;
+  --clr-light-grey: 0 0% 95%;
+
+  // Font sizes
+  --fs-900: 9.375rem; // 150px
+  --fs-800: 4.5rem; // 72px
+  --fs-700: 2.5rem; // 40px
+  --fs-600: 2rem; // 32px
+  --fs-500: 1.5rem; // 24px
+  --fs-400: 1rem; // 16px
+  --fs-300: 0.75rem; // 12px
+
+  // Font familys
+  --ff-serif: "Fraunces", serif;
+  --ff-sans: "Barlow", sans-serif;
+
+  // Other Vars
+  --max-width: 80rem; // 1280px
+  --fluid-width: 65.3125rem; // 1045px
+  --transition: all 0.3s linear;
+}
+
+//Styles
+body {
+  background-color: hsl(var(--clr-cream));
+  font-family: "Barlow", sans-serif;
+}
+ul {
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Fraunces", serif;
+}
+
+//Shared
+.max-width {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  max-width: var(--fluid-width);
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+//Individual styles
+
+// Nav
+header {
+  margin-top: 2rem;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  &__image-container {
+    width: 10.1875rem; //163px
+  }
+
+  &__links {
+    display: none;
+  }
+
+  &__button {
+    background-color: transparent;
+    border: none;
+    position: relative;
+
+    div {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &--hide {
+      transition: var(--transition);
+      opacity: 0;
+    }
+
+    &--show {
+      opacity: 1;
+    }
+  }
+}
+
+//Mobile Menu
+.mobile-menu {
+  opacity: 0;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 577px;
+  // height: 0;
+  // overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(254, 252, 247, 0.504981) 0%,
+    hsl(43, 78%, 98%, 0) 55.94%
+  );
+
+  &__nav {
+    // margin-top: 5rem; //80px
+    text-align: center;
+
+    li {
+      margin-bottom: 2rem;
+
+      a {
+        font-size: var(--fs-500);
+        font-family: var(--ff-serif);
+        font-weight: 900;
+      }
+    }
+  }
+}
+.mobile-menu--show {
+  opacity: 100%;
+  transform: translateY(5rem);
+  // height: 577px;
+}
