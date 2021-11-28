@@ -11,10 +11,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     setIsOpen(!isOpen);
   };
   return (
-    <main>
+    <>
       <Header isOpen={isOpen} toggleMenu={toggleMenu} />
-      <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
-      <>{children}</>
-    </main>
+      {/* <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} /> */}
+      <main>{children}</main>
+    </>
   );
 };

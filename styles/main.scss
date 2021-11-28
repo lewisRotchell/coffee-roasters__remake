@@ -97,13 +97,27 @@ picture {
   --max-width: 80rem; // 1280px
   --fluid-width: 65.3125rem; // 1045px
   --transition: all 0.3s linear;
+  --breakpoint-tablet: 48em;
+}
+
+//SASS Mixins
+@mixin media($breakpoint) {
+  @if $breakpoint==tablet {
+    // 48em = 768px
+    @media only screen and (min-width: 48em) {
+      @content;
+    }
+  }
 }
 
 //Styles
 body {
   background-color: hsl(var(--clr-cream));
   font-family: "Barlow", sans-serif;
+  color: hsl(var(--clr-grey-blue));
+  width: 100%;
 }
+
 ul {
   padding: 0;
 }
@@ -118,16 +132,13 @@ h6 {
 }
 
 //Shared
+
 .max-width {
   max-width: var(--max-width);
   margin-left: auto;
   margin-right: auto;
-}
-
-.container {
-  max-width: var(--fluid-width);
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 button {
@@ -150,6 +161,27 @@ header {
 
   &__links {
     display: none;
+    font-weight: 700;
+    color: hsla(var(--clr-grey), 1);
+    font-size: var(--fs-300);
+    letter-spacing: 0.92px;
+    text-transform: uppercase;
+
+    li {
+      transition: var(--transition);
+    }
+
+    li:where(:not(:last-child)) {
+      margin-right: 2rem;
+    }
+
+    li:hover {
+      color: hsl(var(--clr-grey-blue));
+    }
+
+    @include media(tablet) {
+      display: flex;
+    }
   }
 
   &__button {
@@ -173,27 +205,42 @@ header {
     &--show {
       opacity: 1;
     }
+    @include media(tablet) {
+      display: none;
+    }
   }
 }
 
 //Mobile Menu
 .mobile-menu {
+  position: absolute;
+  z-index: 30;
+  left: 0;
+  right: 0;
   opacity: 0;
   transition: var(--transition);
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 577px;
-  // height: 0;
-  // overflow: hidden;
+  // height: 577px;
+  height: 0;
+  overflow: hidden;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
   background: linear-gradient(
     180deg,
     rgba(254, 252, 247, 0.504981) 0%,
     hsl(43, 78%, 98%, 0) 55.94%
   );
 
+  &--show {
+    opacity: 100%;
+    // transform: translateY(5rem);
+    height: 577px;
+  }
+
   &__nav {
-    // margin-top: 5rem; //80px
+    margin-top: 5rem; //80px
     text-align: center;
 
     li {
@@ -206,9 +253,7 @@ header {
       }
     }
   }
-}
-.mobile-menu--show {
-  opacity: 100%;
-  transform: translateY(5rem);
-  // height: 577px;
+  @include media(tablet) {
+    display: none;
+  }
 }

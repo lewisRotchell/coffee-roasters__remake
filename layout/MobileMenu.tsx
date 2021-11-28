@@ -10,11 +10,7 @@ interface MobileMenuProps {
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen }) => {
   return (
     <aside
-      className={
-        isOpen
-          ? "mobile-menu mobile-menu--show container"
-          : "mobile-menu container"
-      }
+      className={isOpen ? "mobile-menu mobile-menu--show " : "mobile-menu "}
     >
       <nav className="mobile-menu__nav">
         <ul>

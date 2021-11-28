@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "../data/navLinks";
+import { MobileMenu } from "./MobileMenu";
 
 interface HeaderProps {
   toggleMenu: any;
@@ -10,7 +11,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ toggleMenu, isOpen }) => {
   return (
-    <header className="max-width container">
+    <header className="max-width">
       <nav className="nav">
         <div className="nav__image-container">
           <Image
@@ -55,6 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ toggleMenu, isOpen }) => {
           </div>
         </button>
       </nav>
+      <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
     </header>
   );
 };
