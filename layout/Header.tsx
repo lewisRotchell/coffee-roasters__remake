@@ -11,16 +11,18 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ toggleMenu, isOpen }) => {
   return (
-    <header className="max-width">
+    <header className="container">
       <nav className="nav">
-        <div className="nav__image-container">
-          <Image
-            src="/images/shared/desktop/logo.svg"
-            height={26}
-            width={236}
-            alt={"coffee roasters logo"}
-          ></Image>
-        </div>
+        <Link href="#">
+          <a className="nav__image-container">
+            <Image
+              src="/images/shared/desktop/logo.svg"
+              height={26}
+              width={236}
+              alt={"coffee roasters logo"}
+            ></Image>
+          </a>
+        </Link>
 
         <ul className="nav__links">
           {navLinks.map((item, index) => (
